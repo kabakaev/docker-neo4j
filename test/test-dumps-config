@@ -9,7 +9,7 @@ readonly cname="neo4j-$(uuidgen)"
 
 readonly dir=$(mktemp --directory)
 
-docker run --rm --volume="${dir}:/conf" "${image}" dump-config
+docker run --rm --volume="${dir}:/conf:Z" "${image}" dump-config
 
 if [[ "${series}" == "2.3" ]]; then
     [[ -f "${dir}/neo4j.properties" ]]
